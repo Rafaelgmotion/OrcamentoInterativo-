@@ -148,6 +148,111 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
+        /* Portfolio Section - NOVA SEÇÃO */
+        .portfolio-section {
+            margin: 40px 0;
+        }
+        
+        .portfolio-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 200px;
+            background-color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .portfolio-img i {
+            opacity: 0.3;
+        }
+        
+        .portfolio-content {
+            padding: 20px;
+        }
+        
+        .portfolio-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-description {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .portfolio-details {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        .portfolio-detail {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .portfolio-detail:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .detail-value {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .portfolio-price {
+            background-color: rgba(39, 174, 96, 0.1);
+            color: var(--success);
+            padding: 12px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+        
         /* Timeline */
         .timeline {
             position: relative;
@@ -424,6 +529,10 @@
             .features-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         /* Animations */
@@ -458,12 +567,13 @@
         <div class="tabs">
             <div class="tab active" onclick="showTab(0)">Visão Geral</div>
             <div class="tab" onclick="showTab(1)">Escopo do Projeto</div>
-            <div class="tab" onclick="showTab(2)">Investimento</div>
-            <div class="tab" onclick="showTab(3)">ROI Estimado</div>
-            <div class="tab" onclick="showTab(4)">Prazo e Entrega</div>
+            <div class="tab" onclick="showTab(2)">Portfólio de Serviços</div>
+            <div class="tab" onclick="showTab(3)">Investimento</div>
+            <div class="tab" onclick="showTab(4)">ROI Estimado</div>
+            <div class="tab" onclick="showTab(5)">Prazo e Entrega</div>
         </div>
         
-               <!-- Tab 1: Visão Geral -->
+        <!-- Tab 1: Visão Geral -->
         <div class="tab-content active card fade-in">
             <h2><i class="fas fa-binoculars"></i> Visão Geral do Projeto</h2>
             <p>Esta proposta não se trata apenas da criação de um site, mas da entrega de um <span class="highlight">ativo digital completo</span> preparado para gerar receita recorrente através de anúncios.</p>
@@ -501,8 +611,8 @@
             <div style="margin-top: 30px; padding: 20px; background-color: #f8f9fa; border-radius: 10px; border-left: 4px solid var(--success);">
                 <h3 style="color: var(--success); margin-bottom: 10px;"><i class="fas fa-lightbulb"></i> Diferencial Competitivo</h3>
                 <p>Não se trata apenas de um site, mas de uma <strong>solução completa de monetização</strong> com treinamento prático para você gerenciar e lucrar com seu portal desde o primeiro dia.</p>
-            </div> <!-- Esta div fecha a div com estilo inline -->
-        </div> <!-- Esta div fecha o tab-content -->
+            </div>
+        </div>
         
         <!-- Tab 2: Escopo do Projeto -->
         <div class="tab-content card">
@@ -578,7 +688,179 @@
             </div>
         </div>
         
-        <!-- Tab 3: Investimento -->
+        <!-- Tab 3: Portfólio de Serviços (NOVA ABA) -->
+        <div class="tab-content">
+            <div class="portfolio-section">
+                <h2><i class="fas fa-images"></i> Meus Serviços - Trabalhos Realizados</h2>
+                <p class="card" style="text-align: center;">Abaixo estão exemplos de serviços que realizo. Cada projeto é personalizado de acordo com as necessidades do cliente.</p>
+                
+                <div class="portfolio-grid">
+                    <!-- Serviço 1 -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-img" style="background-color: #e3f2fd;">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Portal de Notícias Local</h3>
+                            <p class="portfolio-description">Desenvolvimento completo de portal de notícias com foco em conteúdo regional, sistema de assinaturas e integração com redes sociais.</p>
+                            
+                            <div class="portfolio-details">
+                                <div class="portfolio-detail">
+                                    <span class="detail-label">Medidas/Tamanho:</span>
+                                    <span class="detail-value">Site completo</span>
+                                </div>
+                                <div class="portfolio-detail">
+                                    <span class="detail-label">Tempo de Entrega:</span>
+                                    <span class="detail-value">5-7 dias úteis</span>
+                                </div>
+                                <div class="portfolio-detail">
+                                    <span class="detail-label">Tecnologias:</span>
+                                    <span class="detail-value">WordPress, SEO, AdSense</span>
+                                </div>
+                            </div>
+                            
+                            <div class="portfolio-price">
+                                R$ 1.800 à vista
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Serviço 2 -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-img" style="background-color: #f3e5f5;">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">E-commerce Completo</h3>
+                            <p class="portfolio-description">Loja virtual com sistema de pagamentos, controle de estoque, carrinho de compras e integração com correios.</p>
+                            
+                            <div class="portfolio-details">
+                                <div class="portfolio-detail">
+                                    <span class="detail-label">Medidas/Tamanho:</span>
+                                    <span class="detail-value">Até 50 produtos</span>
+                                </div>
+                                <div class="portfolio-detail">
+                                    <span class="detail-label">Tempo de Entrega:</span>
+                                    <span class="detail-value">7-10 dias úteis</span>
+                                </div>
+                                <div class="portfolio-detail">
+                                    <span class="detail-label">Tecnologias:</span>
+                                    <span class="detail-value">WooCommerce, PagSeguro</span>
+                                </div>
+                            </div>
+                            
+                            <div class="portfolio-price">
+                                R$ 2.400 à vista
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Serviço 3 -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-img" style="background-color: #e8f5e9;">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Site Institucional Corporativo</h3>
+                            <p class="portfolio-description">Website profissional para empresas com seções: sobre, serviços, portfólio, blog e formulário de contato.</p>
+                            
+                            <div class="portfolio-details">
+                                <div class="portfolio-detail">
+                                    <span class="detail-label">Medidas/Tamanho:</span>
+                                    <span class="detail-value">5-7 páginas</span>
+                                </div>
+                                <div class="portfolio-detail">
+                                    <span class="detail-label">Tempo de Entrega:</span>
+                                    <span class="detail-value">4-6 dias úteis</span>
+                                </div>
+                                <div class="portfolio-detail">
+                                    <span class="detail-label">Tecnologias:</span>
+                                    <span class="detail-value">HTML5, CSS3, JavaScript</span>
+                                </div>
+                            </div>
+                            
+                            <div class="portfolio-price">
+                                R$ 1.200 à vista
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Serviço 4 -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-img" style="background-color: #fff3e0;">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Landing Page de Alta Conversão</h3>
+                            <p class="portfolio-description">Página única otimizada para conversão com formulários, call-to-action estratégicos e design persuasivo.</p>
+                            
+                            <div class="portfolio-details">
+                                <div class="portfolio-detail">
+                                    <span class="detail-label">Medidas/Tamanho:</span>
+                                    <span class="detail-value">1 página</span>
+                                </div>
+                                <div class="portfolio-detail">
+                                    <span class="detail-label">Tempo de Entrega:</span>
+                                    <span class="detail-value">3-5 dias úteis</span>
+                                </div>
+                                <div class="portfolio-detail">
+                                    <span class="detail-label">Tecnologias:</span>
+                                    <span class="detail-value">HTML5, CSS3, A/B Testing</span>
+                                </div>
+                            </div>
+                            
+                            <div class="portfolio-price">
+                                R$ 850 à vista
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Serviço 5 -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-img" style="background-color: #e0f7fa;">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Otimização SEO Avançada</h3>
+                            <p class="portfolio-description">Auditoria completa e otimização técnica de sites para melhor rankeamento no Google e outros buscadores.</p>
+                            
+                            <div class="portfolio-details">
+                                <div class="portfolio-detail">
+                                    <span class="detail-label">Medidas/Tamanho:</span>
+                                    <span class="detail-value">Site completo</span>
+                                </div>
+                                <div class="portfolio-detail">
+                                    <span class="detail-label">Tempo de Entrega:</span>
+                                    <span class="detail-value">5-8 dias úteis</span>
+                                </div>
+                                <div class="portfolio-detail">
+                                    <span class="detail-label">Tecnologias:</span>
+                                    <span class="detail-value">Ferramentas SEO, Analytics</span>
+                                </div>
+                            </div>
+                            
+                            <div class="portfolio-price">
+                                R$ 1.500 à vista
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card" style="margin-top: 30px;">
+                    <h3><i class="fas fa-info-circle"></i> Informações Adicionais</h3>
+                    <p>Todos os serviços incluem:</p>
+                    <ul style="padding-left: 20px; margin-top: 10px;">
+                        <li>Design responsivo (adaptável para celulares e tablets)</li>
+                        <li>Otimização básica para mecanismos de busca (SEO)</li>
+                        <li>Instalação de certificado SSL (HTTPS)</li>
+                        <li>Treinamento para gerenciamento do site</li>
+                        <li>30 dias de suporte técnico gratuito</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tab 4: Investimento (antiga Tab 3) -->
         <div class="tab-content">
             <h2 class="card"><i class="fas fa-money-bill-wave"></i> Opções de Investimento</h2>
             
@@ -603,7 +885,7 @@
                         <li>Desconto especial de 14%</li>
                         <li>Pagamento único</li>
                         <li>Início imediato do projeto</li>
-                        <li><strong>Bônus:</strong>Instalação e configuração em hospedagem HostGator premium </li>
+                        <li><strong>Bônus:</strong> Hospedagem premium por 12 meses</li>
                     </ul>
                     <button class="cta-button" onclick="selectPlan('avista')">Escolher esta opção</button>
                 </div>
@@ -628,7 +910,7 @@
             </div>
         </div>
         
-        <!-- Tab 4: ROI Estimado -->
+        <!-- Tab 5: ROI Estimado (antiga Tab 4) -->
         <div class="tab-content">
             <div class="card">
                 <h2><i class="fas fa-calculator"></i> Calculadora de ROI Estimado</h2>
@@ -689,7 +971,7 @@
             </div>
         </div>
         
-        <!-- Tab 5: Prazo e Entrega -->
+        <!-- Tab 6: Prazo e Entrega (antiga Tab 5) -->
         <div class="tab-content">
             <div class="card">
                 <h2><i class="fas fa-calendar-alt"></i> Cronograma do Projeto</h2>
