@@ -8,7 +8,7 @@
     <style>
         :root {
             --primary: #1a1a1a;
-            --secondary: #8B0000;
+            --secondary: #0066cc;
             --accent: #D4AF37;
             --light: #f5f5f5;
             --dark: #0a0a0a;
@@ -265,13 +265,20 @@
             align-items: center;
             justify-content: center;
             color: #999;
-            font-size: 2.5rem;
             position: relative;
             overflow: hidden;
         }
         
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
         .product-img i {
             opacity: 0.3;
+            font-size: 3rem;
         }
         
         .product-content {
@@ -334,7 +341,7 @@
         }
         
         .product-price {
-            background-color: rgba(139, 0, 0, 0.1);
+            background-color: rgba(0, 102, 204, 0.1);
             color: var(--secondary);
             padding: 12px;
             text-align: center;
@@ -407,7 +414,7 @@
         }
         
         .feature-icon {
-            background-color: rgba(139, 0, 0, 0.1);
+            background-color: rgba(0, 102, 204, 0.1);
             color: var(--secondary);
             width: 50px;
             height: 50px;
@@ -583,13 +590,13 @@
             <div class="products-grid">
                 <!-- Produto 1 -->
                 <div class="product-item">
-                    <div class="product-img" style="background-color: #e8e8e8;">
-                        <i class="fas fa-cut"></i>
+                    <div class="product-img">
+                        <img src="foto/foto-logo.png" alt="Logotipo Recortado" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22180%22%20viewBox%3D%220%200%20300%20180%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23e8e8e8%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Arial%22%20font-size%3D%2224%22%20fill%3D%22%23999%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%3ELogo%3C%2Ftext%3E%3C%2Fsvg%3E'">
                     </div>
                     <div class="product-content">
                         <h3 class="product-title">
                             <span>Logotipo Recortado</span>
-                            <span class="product-badge">foto/foto-logo.png</span>
+                            <span class="product-badge">Item 1</span>
                         </h3>
                         <p class="product-description">Adesivo de recorte em vinil preto para aplicação em vidro, parede ou superfície lisa.</p>
                         
@@ -616,13 +623,13 @@
                 
                 <!-- Produto 2 -->
                 <div class="product-item">
-                    <div class="product-img" style="background-color: #f0f0f0;">
-                        <i class="fas fa-layer-group"></i>
+                    <div class="product-img">
+                        <img src="foto/foto-placa-entrada.png" alt="Placas de Acrílico" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22180%22%20viewBox%3D%220%200%20300%20180%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f0f0f0%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Arial%22%20font-size%3D%2224%22%20fill%3D%22%23999%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%3EPlacas%3C%2Ftext%3E%3C%2Fsvg%3E'">
                     </div>
                     <div class="product-content">
                         <h3 class="product-title">
                             <span>Placas de Acrílico</span>
-                            <span class="product-badge">foto/foto-placa-entrada.png</span>
+                            <span class="product-badge">Item 2</span>
                         </h3>
                         <p class="product-description">Placas de acrílico adesivadas com informações ou logotipo da empresa.</p>
                         
@@ -653,13 +660,13 @@
                 
                 <!-- Produto 3 -->
                 <div class="product-item">
-                    <div class="product-img" style="background-color: #e8f0e8;">
-                        <i class="fas fa-paint-roller"></i>
+                    <div class="product-img">
+                        <img src="foto/frigobar.png" alt="Frigobar Personalizado" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22180%22%20viewBox%3D%220%200%20300%20180%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23e8f0e8%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Arial%22%20font-size%3D%2224%22%20fill%3D%22%23999%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%3EFrigobar%3C%2Ftext%3E%3C%2Fsvg%3E'">
                     </div>
                     <div class="product-content">
                         <h3 class="product-title">
                             <span>Frigobar Personalizado</span>
-                            <span class="product-badge">foto/frigobar.png</span>
+                            <span class="product-badge">Item 3</span>
                         </h3>
                         <p class="product-description">Adesivagem completa e pintura do frigobar com identidade visual da empresa.</p>
                         
@@ -686,13 +693,13 @@
                 
                 <!-- Produto 4 -->
                 <div class="product-item">
-                    <div class="product-img" style="background-color: #f0f0f8;">
-                        <i class="fas fa-sticky-note"></i>
+                    <div class="product-img">
+                        <img src="foto/foto-entrada.png" alt="Adesivo de Recorte Branco" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22180%22%20viewBox%3D%220%200%20300%20180%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f0f0f8%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Arial%22%20font-size%3D%2224%22%20fill%3D%22%23999%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%3EAdesivo%3C%2Ftext%3E%3C%2Fsvg%3E'">
                     </div>
                     <div class="product-content">
                         <h3 class="product-title">
                             <span>Adesivo de Recorte Branco</span>
-                            <span class="product-badge">foto/foto-entrada.png</span>
+                            <span class="product-badge">Item 4</span>
                         </h3>
                         <p class="product-description">Adesivo de recorte em vinil branco para sinalização interna ou externa.</p>
                         
@@ -719,13 +726,13 @@
                 
                 <!-- Produto 5 -->
                 <div class="product-item">
-                    <div class="product-img" style="background-color: #f8f0e8;">
-                        <i class="fas fa-vault"></i>
+                    <div class="product-img">
+                        <img src="foto/porta-cofre.jpeg" alt="Porta do Cofre" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22180%22%20viewBox%3D%220%200%20300%20180%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f8f0e8%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Arial%22%20font-size%3D%2224%22%20fill%3D%22%23999%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%3ECofre%3C%2Ftext%3E%3C%2Fsvg%3E'">
                     </div>
                     <div class="product-content">
                         <h3 class="product-title">
                             <span>Porta do Cofre</span>
-                            <span class="product-badge">foto/porta-cofre.jpeg</span>
+                            <span class="product-badge">Item 5</span>
                         </h3>
                         <p class="product-description">Adesivagem completa da porta do cofre com identificação e segurança visual.</p>
                         
@@ -752,15 +759,15 @@
 
                 <!-- Produto 6 -->
                 <div class="product-item">
-                    <div class="product-img" style="background-color: #f0f0f8;">
-                        <i class="fas fa-sticky-note"></i>
+                    <div class="product-img">
+                        <img src="foto/foto-ar.jpeg" alt="Adesivo para Ar Condicionado" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22180%22%20viewBox%3D%220%200%20300%20180%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23e0f0f8%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Arial%22%20font-size%3D%2224%22%20fill%3D%22%23999%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%3EAr%20Condicionado%3C%2Ftext%3E%3C%2Fsvg%3E'">
                     </div>
                     <div class="product-content">
                         <h3 class="product-title">
-                            <span>Adesivo preto para o Ar Condicionado</span>
-                            <span class="product-badge">foto/foto-ar.jpeg</span>
+                            <span>Adesivo para Ar Condicionado</span>
+                            <span class="product-badge">Item 6</span>
                         </h3>
-                        <p class="product-description">Adesivo preto para estética do ar condicionado.</p>
+                        <p class="product-description">Adesivo preto fosco para estética do ar condicionado.</p>
                         
                         <div class="product-details">
                             <div class="product-detail">
@@ -778,7 +785,7 @@
                         </div>
                         
                         <div class="product-price">
-                            R$ 45,00
+                            R$ 50,00
                         </div>
                     </div>
                 </div>
@@ -817,7 +824,7 @@
                         <span>R$ 100,00</span>
                     </div>
                     <div class="summary-item">
-                        <span>6. Ar Condicionado - Adesivo Total</span>
+                        <span>6. Ar Condicionado - Adesivo Preto</span>
                         <span>R$ 50,00</span>
                     </div>
                 </div>
@@ -847,8 +854,8 @@
                         </div>
                         <div>
                             <h3>Parcelado</h3>
-                            <p>Cartão de crédito em até 3x de R$ 155,00</p>
-                            <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">Total: R$ 465,00</p>
+                            <p>Cartão de crédito em até 3x de R$ 151,67</p>
+                            <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">Total: R$ 455,00</p>
                         </div>
                     </div>
                     <div class="feature-item">
@@ -901,7 +908,7 @@
                     </div>
                 </div>
                 
-                <div style="margin-top: 30px; padding: 20px; background-color: rgba(139, 0, 0, 0.05); border-radius: 10px;">
+                <div style="margin-top: 30px; padding: 20px; background-color: rgba(0, 102, 204, 0.05); border-radius: 10px;">
                     <h3 style="color: var(--secondary);"><i class="fas fa-map-marker-alt"></i> Área de Atendimento</h3>
                     <p>Serviço de entrega e instalação inclusos para a região de Três Rios - RJ. Para outras localidades, consultar taxa de deslocamento.</p>
                 </div>
@@ -961,7 +968,7 @@
             <h2 style="margin-bottom: 20px;">Aceitar este Orçamento?</h2>
             <p style="max-width: 800px; margin: 0 auto 30px; opacity: 0.9;">Para confirmar a produção dos materiais para a <strong>Comercial Tático</strong>, entre em contato pelo WhatsApp.</p>
             
-            <a href="https://wa.me/5524981356706?text=Olá!%20Sou%20da%20Comercial%20Tático%20e%20aceito%20o%20orçamento%20de%20R$405%20para%20os%20materiais%20impressos" 
+            <a href="https://wa.me/5524981356706?text=Olá!%20Sou%20da%20Comercial%20Tático%20e%20aceito%20o%20orçamento%20de%20R$455%20para%20os%20materiais%20impressos" 
                class="cta-button" 
                target="_blank">
                 <i class="fab fa-whatsapp"></i> Aceitar Orçamento (R$ 455,00)
@@ -1012,7 +1019,7 @@
         
         // Calculate total with discount
         function calculateTotal() {
-            const prices = [90, 80, 90, 45, 100];
+            const prices = [90, 80, 90, 45, 100, 50]; // Adicionado o 6º produto
             const total = prices.reduce((sum, price) => sum + price, 0);
             const discount = total * 0.05;
             const totalWithDiscount = total - discount;
