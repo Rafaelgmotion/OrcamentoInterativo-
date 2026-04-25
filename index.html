@@ -1,1177 +1,687 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orçamento: Materiais Impressos - Comercial Tático</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #1a1a1a;
-            --secondary: #0066cc;
-            --accent: #D4AF37;
-            --light: #f5f5f5;
-            --dark: #0a0a0a;
-            --success: #228B22;
-            --warning: #FFA500;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
-            font-family: 'Open Sans', sans-serif;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-            border-radius: 0 0 20px 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-            border-bottom: 5px solid var(--secondary);
-        }
-        
-        .header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
-            background-size: cover;
-        }
-        
-        .client-info {
-            margin-bottom: 25px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .client-logo {
-            font-size: 3.5rem;
-            color: var(--accent);
-            margin-bottom: 15px;
-        }
-        
-        .client-name {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            color: white;
-        }
-        
-        .client-description {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            font-weight: 300;
-            color: #ccc;
-        }
-        
-        .proposal-title {
-            font-size: 1.8rem;
-            margin: 25px 0 15px;
-            position: relative;
-            z-index: 1;
-            color: white;
-        }
-        
-        .proposal-description {
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-            color: #ddd;
-        }
-        
-        .badge {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--primary);
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-top: 20px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Studio Info */
-        .studio-info {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            position: relative;
-            z-index: 1;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .studio-logo {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .studio-details h3 {
-            color: var(--primary);
-            margin-bottom: 5px;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .studio-details a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-        
-        .studio-details a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Cards */
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            margin: 25px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--secondary);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .card h2 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .card h2 i {
-            color: var(--secondary);
-        }
-        
-        /* Tabs */
-        .tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .tab {
-            padding: 12px 24px;
-            background-color: #f1f5f9;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .tab.active {
-            background-color: var(--secondary);
-            color: white;
-        }
-        
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Products Section */
-        .products-section {
-            margin: 40px 0;
-        }
-        
-        .products-section h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: var(--primary);
-        }
-        
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        
-        .product-item {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 4px solid var(--secondary);
-        }
-        
-        .product-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
-        }
-        
-        .product-img-container {
-            width: 100%;
-            height: 180px;
-            background-color: #f1f5f9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        
-        .product-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .product-img-container:hover .product-img {
-            transform: scale(1.05);
-        }
-        
-        .product-img-container::after {
-            content: "🔍 Clique para ampliar";
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .product-img-container:hover::after {
-            opacity: 1;
-        }
-        
-        .product-content {
-            padding: 20px;
-        }
-        
-        .product-title {
-            font-size: 1.4rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .product-badge {
-            background-color: var(--accent);
-            color: var(--primary);
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .product-description {
-            color: #666;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-        
-        .product-details {
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-        
-        .product-detail {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .product-detail:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-        
-        .detail-label {
-            font-weight: 600;
-            color: #555;
-        }
-        
-        .detail-value {
-            color: var(--primary);
-            font-weight: 600;
-        }
-        
-        .product-price {
-            background-color: rgba(0, 102, 204, 0.1);
-            color: var(--secondary);
-            padding: 12px;
-            text-align: center;
-            border-radius: 8px;
-            margin-top: 15px;
-            font-size: 1.4rem;
-            font-weight: 700;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        /* Lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 90%;
-            position: relative;
-        }
-        
-        .lightbox-img {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: 8px;
-        }
-        
-        .lightbox-close {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            background: rgba(0, 0, 0, 0.5);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .lightbox-close:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .lightbox-caption {
-            position: absolute;
-            bottom: -40px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            color: white;
-            font-size: 1rem;
-            padding: 10px;
-        }
-        
-        /* Investment Summary */
-        .investment-summary {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 40px 0;
-            border: 2px solid var(--secondary);
-        }
-        
-        .summary-title {
-            text-align: center;
-            color: var(--primary);
-            margin-bottom: 30px;
-            font-size: 1.8rem;
-        }
-        
-        .summary-items {
-            margin-bottom: 25px;
-        }
-        
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px dashed #ddd;
-        }
-        
-        .summary-item:last-child {
-            border-bottom: none;
-        }
-        
-        .summary-total {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--secondary);
-            margin-top: 20px;
-            border: 2px solid var(--secondary);
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        /* Features */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-        
-        .feature-item {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-        }
-        
-        .feature-icon {
-            background-color: rgba(0, 102, 204, 0.1);
-            color: var(--secondary);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            flex-shrink: 0;
-        }
-        
-        /* CTA */
-        .cta-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
-            color: white;
-            padding: 50px 20px;
-            text-align: center;
-            border-radius: 15px;
-            margin: 40px 0;
-            border-top: 5px solid var(--accent);
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--primary);
-            padding: 18px 40px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-decoration: none;
-            margin: 20px 10px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .cta-button:hover {
-            background-color: #ffb733;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        
-        .cta-button.secondary {
-            background-color: transparent;
-            border: 2px solid var(--accent);
-            color: var(--accent);
-        }
-        
-        .cta-button.secondary:hover {
-            background-color: var(--accent);
-            color: var(--primary);
-        }
-        
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 30px;
-            color: #666;
-            border-top: 1px solid #eee;
-            margin-top: 40px;
-        }
-        
-        .whatsapp-button {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 1000;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .whatsapp-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .client-name {
-                font-size: 1.8rem;
-            }
-            
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .studio-info {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-            
-            .cta-button {
-                display: block;
-                margin: 15px auto;
-                width: 90%;
-            }
-            
-            .lightbox-content {
-                max-width: 95%;
-            }
-            
-            .lightbox-caption {
-                bottom: -50px;
-                font-size: 0.9rem;
-            }
-        }
-        
-        /* Animations */
-        .fade-in {
-            animation: fadeIn 1s ease;
-        }
-        
-        .highlight {
-            background-color: rgba(212, 175, 55, 0.2);
-            padding: 2px 5px;
-            border-radius: 3px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Comercial — Machado Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azul: #1a6bff;
+    --azul-escuro: #0a3fa8;
+    --azul-claro: #e8f0ff;
+    --preto: #0d0d0d;
+    --cinza: #555;
+    --cinza-claro: #f5f6fa;
+    --branco: #ffffff;
+    --destaque: #ff4d1c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--branco);
+    color: var(--preto);
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--preto);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 40px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(26,107,255,0.25) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(26,107,255,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--azul);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 2px;
+    margin-bottom: 32px;
+    width: fit-content;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 90px);
+    font-weight: 900;
+    color: var(--branco);
+    line-height: 1.0;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 span {
+    color: var(--azul);
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: rgba(255,255,255,0.55);
+    max-width: 480px;
+    line-height: 1.6;
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .hero-para {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* SEÇÕES */
+  section {
+    padding: 80px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--azul);
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    color: var(--preto);
+  }
+
+  p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--cinza);
+    margin-bottom: 16px;
+  }
+
+  /* DIVISOR */
+  .divider {
+    width: 60px;
+    height: 3px;
+    background: var(--azul);
+    margin: 0 auto 64px;
+  }
+
+  /* PROBLEMA */
+  .problema-bg {
+    background: var(--cinza-claro);
+  }
+
+  .problema-bg section {
+    max-width: 900px;
+  }
+
+  .problema-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .problema-card {
+    background: white;
+    border-radius: 12px;
+    padding: 28px;
+    border-left: 4px solid var(--destaque);
+  }
+
+  .problema-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--preto);
+  }
+
+  .problema-card p {
+    font-size: 15px;
+    margin: 0;
+  }
+
+  /* SOLUÇÃO */
+  .solucao-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  .step {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    min-width: 52px;
+    height: 52px;
+    background: var(--azul);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .step-content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--preto);
+  }
+
+  .step-content p {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  /* CASE */
+  .case-bg {
+    background: var(--azul-escuro);
+    padding: 80px 40px;
+  }
+
+  .case-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .case-bg .label { color: rgba(255,255,255,0.5); }
+  .case-bg h2 { color: white; }
+  .case-bg p { color: rgba(255,255,255,0.7); }
+
+  .numeros {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .numero-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 28px 20px;
+    text-align: center;
+  }
+
+  .numero-card .valor {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--azul);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .numero-card .desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* PROPOSTA */
+  .plano-card {
+    background: var(--preto);
+    border-radius: 16px;
+    padding: 48px;
+    color: white;
+    margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .plano-card::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(26,107,255,0.3) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .plano-badge {
+    display: inline-block;
+    background: var(--azul);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+  }
+
+  .plano-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 32px;
+    color: white;
+  }
+
+  .plano-itens {
+    list-style: none;
+    margin-bottom: 40px;
+  }
+
+  .plano-itens li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 16px;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .plano-itens li:last-child { border-bottom: none; }
+
+  .check {
+    min-width: 22px;
+    height: 22px;
+    background: var(--azul);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  .preco-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .preco-bloco { }
+
+  .preco-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .preco-valor {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+  }
+
+  .preco-valor span {
+    font-size: 22px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .preco-obs {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
+
+  .preco-midia {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 24px;
+  }
+
+  .preco-midia p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .preco-midia strong {
+    color: white;
+  }
+
+  /* PERFIL */
+  .perfil-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 48px;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  .perfil-foto {
+    position: relative;
+  }
+
+  .perfil-foto img {
+    width: 100%;
+    border-radius: 12px;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 3/4;
+  }
+
+  .perfil-foto::after {
+    content: '';
+    position: absolute;
+    bottom: -12px; left: -12px;
+    width: 100%; height: 100%;
+    border: 2px solid var(--azul);
+    border-radius: 12px;
+    z-index: -1;
+  }
+
+  .perfil-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--preto);
+  }
+
+  .perfil-cargo {
+    font-size: 13px;
+    color: var(--azul);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .perfil-info p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* CTA FINAL */
+  .cta-bg {
+    background: var(--azul);
+    padding: 80px 40px;
+    text-align: center;
+  }
+
+  .cta-bg h2 {
+    color: white;
+    font-size: clamp(28px, 4vw, 52px);
+    margin-bottom: 16px;
+  }
+
+  .cta-bg p {
+    color: rgba(255,255,255,0.8);
+    font-size: 18px;
+    max-width: 480px;
+    margin: 0 auto 40px;
+  }
+
+  .btn-cta {
+    display: inline-block;
+    background: white;
+    color: var(--azul);
+    font-size: 15px;
+    font-weight: 700;
+    padding: 18px 40px;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+  }
+
+  /* RODAPÉ */
+  footer {
+    background: var(--preto);
+    padding: 32px 40px;
+    text-align: center;
+  }
+
+  footer p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+    margin: 0;
+  }
+
+  footer strong {
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* RESPONSIVO */
+  @media (max-width: 640px) {
+    .hero { padding: 48px 24px; }
+    section { padding: 60px 24px; }
+    .problema-grid { grid-template-columns: 1fr; }
+    .numeros { grid-template-columns: 1fr; }
+    .perfil-grid { grid-template-columns: 1fr; }
+    .perfil-foto::after { display: none; }
+    .plano-card { padding: 32px 24px; }
+    .case-bg { padding: 60px 24px; }
+    .cta-bg { padding: 60px 24px; }
+  }
+
+  /* ANIMAÇÕES */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero > * {
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero > *:nth-child(3) { animation-delay: 0.4s; }
+  .hero > *:nth-child(4) { animation-delay: 0.55s; }
+</style>
 </head>
 <body>
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-content">
-            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-            <img class="lightbox-img" id="lightbox-img" src="" alt="">
-            <div class="lightbox-caption" id="lightbox-caption"></div>
-        </div>
-    </div>
-    
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/5524981356706?text=Olá!%20Recebi%20o%20orçamento%20para%20a%20minha%20loja%20e%20gostaria%20de%20contratar%20os%20serviços" 
-       class="whatsapp-button" 
-       target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    
-    <!-- Header -->
-    <div class="header">
-        <div class="client-info">
-            <div class="client-logo">
-                <i class="fas fa-shield-alt"></i>
-            </div>
-            <h1 class="client-name">Comercial Tático</h1>
-            <p class="client-description">Loja de Armas e Munição</p>
-        </div>
-        
-        <h2 class="proposal-title">Orçamento para Materiais Impressos e Adesivos</h2>
-        <p class="proposal-description">Proposta comercial para produção de adesivos, placas e materiais personalizados</p>
-        <div class="badge">Proposta Válida por 15 dias</div>
-        
-        <div class="studio-info">
-            <div class="studio-logo">LS</div>
-            <div class="studio-details">
-                <h3>LumenStudio</h3>
-                <a href="https://rafaelgmotion.github.io/LumenStudio/" target="_blank">rafaelgmotion.github.io/LumenStudio/</a>
-                <p style="font-size: 0.9rem; margin-top: 5px;">Design & Produção Visual</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="container">
-        <!-- Tabs Navigation -->
-        <div class="tabs">
-            <div class="tab active" onclick="showTab(0)">Produtos & Serviços</div>
-            <div class="tab" onclick="showTab(1)">Investimento Total</div>
-            <div class="tab" onclick="showTab(2)">Prazo & Entrega</div>
-            <div class="tab" onclick="showTab(3)">Garantia</div>
-        </div>
-        
-        <!-- Tab 1: Produtos & Serviços -->
-        <div class="tab-content active card fade-in">
-            <h2><i class="fas fa-tags"></i> Produtos e Serviços Propostos</h2>
-            <p>Confira abaixo os detalhes de cada item proposto para a Comercial Tático. Clique nas imagens para ampliar e ver a simulação completa.</p>
-            
-            <div class="products-grid">
-                <!-- Produto 1 -->
-                <div class="product-item">
-                    <div class="product-img-container" onclick="openLightbox('foto/foto-logo.png', 'Logotipo Recortado - Simulação')">
-                        <img class="product-img" src="foto/foto-logo.png" alt="Logotipo Recortado" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22180%22%20viewBox%3D%220%200%20300%20180%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23e8e8e8%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Montserrat%22%20font-size%3D%2220%22%20fill%3D%22%23999%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%3ESimulação%3C/text%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2265%25%22%20font-family%3D%22Montserrat%22%20font-size%3D%2216%22%20fill%3D%22%23999%22%20text-anchor%3D%22middle%22%3ELogotipo%3C/text%3E%3C/svg%3E'">
-                    </div>
-                    <div class="product-content">
-                        <h3 class="product-title">
-                            <span>Logotipo Recortado</span>
-                            <span class="product-badge">Item 1</span>
-                        </h3>
-                        <p class="product-description">Adesivo de recorte em vinil preto para aplicação em vidro, parede ou superfície lisa.</p>
-                        
-                        <div class="product-details">
-                            <div class="product-detail">
-                                <span class="detail-label">Material:</span>
-                                <span class="detail-value">Adesivo Preto Recorte</span>
-                            </div>
-                            <div class="product-detail">
-                                <span class="detail-label">Medidas:</span>
-                                <span class="detail-value">1,2 x 0,60m</span>
-                            </div>
-                            <div class="product-detail">
-                                <span class="detail-label">Aplicação:</span>
-                                <span class="detail-value">Inclusa</span>
-                            </div>
-                        </div>
-                        
-                        <div class="product-price">
-                            R$ 90,00
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Produto 2 -->
-                <div class="product-item">
-                    <div class="product-img-container" onclick="openLightbox('foto/palca-entrada.png', 'Placas de Acrílico - Simulação')">
-                        <img class="product-img" src="foto/palca-entrada.png" alt="Placas de Acrílico" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22180%22%20viewBox%3D%220%200%20300%20180%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f0f0f0%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Montserrat%22%20font-size%3D%2220%22%20fill%3D%22%23999%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%3ESimulação%3C/text%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2265%25%22%20font-family%3D%22Montserrat%22%20font-size%3D%2216%22%20fill%3D%22%23999%22%20text-anchor%3D%22middle%22%3EPlacas%3C/text%3E%3C/svg%3E'">
-                    </div>
-                    <div class="product-content">
-                        <h3 class="product-title">
-                            <span>Placas de Acrílico</span>
-                            <span class="product-badge">Item 2</span>
-                        </h3>
-                        <p class="product-description">Placas de acrílico adesivadas com informações ou logotipo da empresa.</p>
-                        
-                        <div class="product-details">
-                            <div class="product-detail">
-                                <span class="detail-label">Material:</span>
-                                <span class="detail-value">Acrílico + Adesivo</span>
-                            </div>
-                            <div class="product-detail">
-                                <span class="detail-label">Medidas:</span>
-                                <span class="detail-value">50 x 40cm (cada)</span>
-                            </div>
-                            <div class="product-detail">
-                                <span class="detail-label">Quantidade:</span>
-                                <span class="detail-value">2 Unidades</span>
-                            </div>
-                            <div class="product-detail">
-                                <span class="detail-label">Unitário:</span>
-                                <span class="detail-value">R$ 40,00</span>
-                            </div>
-                        </div>
-                        
-                        <div class="product-price">
-                            R$ 80,00 (as duas)
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Produto 3 -->
-                <div class="product-item">
-                    <div class="product-img-container" onclick="openLightbox('foto/frigobar.png', 'Frigobar Personalizado - Simulação')">
-                        <img class="product-img" src="foto/frigobar.png" alt="Frigobar Personalizado" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22180%22%20viewBox%3D%220%200%20300%20180%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23e8f0e8%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Montserrat%22%20font-size%3D%2220%22%20fill%3D%22%23999%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%3ESimulação%3C/text%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2265%25%22%20font-family%3D%22Montserrat%22%20font-size%3D%2216%22%20fill%3D%22%23999%22%20text-anchor%3D%22middle%22%3EFrigobar%3C/text%3E%3C/svg%3E'">
-                    </div>
-                    <div class="product-content">
-                        <h3 class="product-title">
-                            <span>Frigobar Personalizado</span>
-                            <span class="product-badge">Item 3</span>
-                        </h3>
-                        <p class="product-description">Adesivagem completa e pintura do frigobar com identidade visual da empresa.</p>
-                        
-                        <div class="product-details">
-                            <div class="product-detail">
-                                <span class="detail-label">Serviço:</span>
-                                <span class="detail-value">Adesivo + Pintura</span>
-                            </div>
-                            <div class="product-detail">
-                                <span class="detail-label">Material:</span>
-                                <span class="detail-value">Adesivo de Alta Qualidade</span>
-                            </div>
-                            <div class="product-detail">
-                                <span class="detail-label">Tipo:</span>
-                                <span class="detail-value">Personalização Total</span>
-                            </div>
-                        </div>
-                        
-                        <div class="product-price">
-                            R$ 90,00
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Produto 4 -->
-                <div class="product-item">
-                    <div class="product-img-container" onclick="openLightbox('foto/foto-entrada.png', 'Adesivo de Recorte Branco - Simulação')">
-                        <img class="product-img" src="foto/foto-entrada.png" alt="Adesivo de Recorte Branco" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22180%22%20viewBox%3D%220%200%20300%20180%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f0f0f8%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Montserrat%22%20font-size%3D%2220%22%20fill%3D%22%23999%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%3ESimulação%3C/text%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2265%25%22%20font-family%3D%22Montserrat%22%20font-size%3D%2216%22%20fill%3D%22%23999%22%20text-anchor%3D%22middle%22%3EAdesivo%20Branco%3C/text%3E%3C/svg%3E'">
-                    </div>
-                    <div class="product-content">
-                        <h3 class="product-title">
-                            <span>Adesivo de Recorte Branco</span>
-                            <span class="product-badge">Item 4</span>
-                        </h3>
-                        <p class="product-description">Adesivo de recorte em vinil branco para sinalização interna ou externa.</p>
-                        
-                        <div class="product-details">
-                            <div class="product-detail">
-                                <span class="detail-label">Material:</span>
-                                <span class="detail-value">Adesivo Branco Recorte</span>
-                            </div>
-                            <div class="product-detail">
-                                <span class="detail-label">Tipo:</span>
-                                <span class="detail-value">Vinil de Recorte</span>
-                            </div>
-                            <div class="product-detail">
-                                <span class="detail-label">Aplicação:</span>
-                                <span class="detail-value">Inclusa</span>
-                            </div>
-                        </div>
-                        
-                        <div class="product-price">
-                            R$ 45,00
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Produto 5 -->
-                <div class="product-item">
-                    <div class="product-img-container" onclick="openLightbox('foto/porta-cofre.jpeg', 'Porta do Cofre - Simulação')">
-                        <img class="product-img" src="foto/porta-cofre.jpeg" alt="Porta do Cofre" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22180%22%20viewBox%3D%220%200%20300%20180%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f8f0e8%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Montserrat%22%20font-size%3D%2220%22%20fill%3D%22%23999%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%3ESimulação%3C/text%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2265%25%22%20font-family%3D%22Montserrat%22%20font-size%3D%2216%22%20fill%3D%22%23999%22%20text-anchor%3D%22middle%22%3EPorta%20Cofre%3C/text%3E%3C/svg%3E'">
-                    </div>
-                    <div class="product-content">
-                        <h3 class="product-title">
-                            <span>Porta do Cofre</span>
-                            <span class="product-badge">Item 5</span>
-                        </h3>
-                        <p class="product-description">Adesivagem completa da porta do cofre com identificação e segurança visual.</p>
-                        
-                        <div class="product-details">
-                            <div class="product-detail">
-                                <span class="detail-label">Serviço:</span>
-                                <span class="detail-value">Adesivagem Total</span>
-                            </div>
-                            <div class="product-detail">
-                                <span class="detail-label">Material:</span>
-                                <span class="detail-value">Adesivo Especial</span>
-                            </div>
-                            <div class="product-detail">
-                                <span class="detail-label">Aplicação:</span>
-                                <span class="detail-value">Profissional</span>
-                            </div>
-                        </div>
-                        
-                        <div class="product-price">
-                            R$ 100,00
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Produto 6 -->
-                <div class="product-item">
-                    <div class="product-img-container" onclick="openLightbox('foto/foto-ar.jpeg', 'Adesivo para Ar Condicionado - Simulação')">
-                        <img class="product-img" src="foto/foto-ar.jpeg" alt="Adesivo para Ar Condicionado" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22180%22%20viewBox%3D%220%200%20300%20180%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23e0f0f8%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20font-family%3D%22Montserrat%22%20font-size%3D%2220%22%20fill%3D%22%23999%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%3ESimulação%3C/text%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2265%25%22%20font-family%3D%22Montserrat%22%20font-size%3D%2216%22%20fill%3D%22%23999%22%20text-anchor%3D%22middle%22%3EAr%20Condicionado%3C/text%3E%3C/svg%3E'">
-                    </div>
-                    <div class="product-content">
-                        <h3 class="product-title">
-                            <span>Adesivo para Ar Condicionado</span>
-                            <span class="product-badge">Item 6</span>
-                        </h3>
-                        <p class="product-description">Adesivo preto fosco para estética do ar condicionado.</p>
-                        
-                        <div class="product-details">
-                            <div class="product-detail">
-                                <span class="detail-label">Material:</span>
-                                <span class="detail-value">Adesivo Preto Fosco</span>
-                            </div>
-                            <div class="product-detail">
-                                <span class="detail-label">Tipo:</span>
-                                <span class="detail-value">Adesivo Vinil</span>
-                            </div>
-                            <div class="product-detail">
-                                <span class="detail-label">Aplicação:</span>
-                                <span class="detail-value">Inclusa</span>
-                            </div>
-                        </div>
-                        
-                        <div class="product-price">
-                            R$ 50,00
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div style="margin-top: 30px; padding: 20px; background-color: #f8f9fa; border-radius: 10px;">
-                <h3 style="color: var(--secondary); margin-bottom: 10px;"><i class="fas fa-info-circle"></i> Informações Técnicas</h3>
-                <p>Todos os adesivos são produzidos em vinil de alta qualidade com durabilidade de até 5 anos para aplicação interna e 3 anos para externa. As placas de acrílico possuem 1mm de espessura e acabamento adesivado.</p>
-                <p style="margin-top: 10px; font-style: italic; color: #666;"><strong>Nota:</strong> As imagens apresentadas são simulações visuais dos serviços propostos. O resultado final pode variar conforme as condições do local de aplicação.</p>
-            </div>
-        </div>
-        
-        <!-- Tab 2: Investimento Total -->
-        <div class="tab-content">
-            <div class="investment-summary">
-                <h2 class="summary-title"><i class="fas fa-calculator"></i> Resumo do Investimento</h2>
-                
-                <div class="summary-items">
-                    <div class="summary-item">
-                        <span>1. Logotipo Recortado (1,2x0,60m)</span>
-                        <span>R$ 90,00</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>2. 2 Placas de Acrílico (50x40cm)</span>
-                        <span>R$ 80,00</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>3. Adesivo e Pintura do Frigobar</span>
-                        <span>R$ 90,00</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>4. Adesivo de Recorte Branco</span>
-                        <span>R$ 45,00</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>5. Porta do Cofre - Adesivo Total</span>
-                        <span>R$ 100,00</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>6. Ar Condicionado - Adesivo Preto</span>
-                        <span>R$ 50,00</span>
-                    </div>
-                </div>
-                
-                <div class="summary-total">
-                    <span>TOTAL DO INVESTIMENTO</span>
-                    <span id="total-investment">R$ 455,00</span>
-                </div>
-            </div>
-            
-            <div class="card">
-                <h2><i class="fas fa-credit-card"></i> Formas de Pagamento</h2>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-money-bill-wave"></i>
-                        </div>
-                        <div>
-                            <h3>À Vista</h3>
-                            <p>Desconto de 5% no pagamento à vista: <strong>R$ 432,25</strong></p>
-                            <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">Economia de R$ 22,75</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-credit-card"></i>
-                        </div>
-                        <div>
-                            <h3>Parcelado</h3>
-                            <p>Cartão de crédito em até 3x de R$ 151,67</p>
-                            <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">Total: R$ 455,00</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <div>
-                            <h3>PIX ou Transferência</h3>
-                            <p>Pagamento via PIX ou transferência bancária</p>
-                            <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">Chave PIX: 60.162.226/0001-10</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Tab 3: Prazo & Entrega -->
-        <div class="tab-content">
-            <div class="card">
-                <h2><i class="fas fa-calendar-alt"></i> Cronograma de Produção e Entrega</h2>
-                <p>Prazo estimado para produção e instalação: <strong>3 a 5 dias úteis</strong> após aprovação do orçamento.</p>
-                
-                <div class="features-grid" style="margin-top: 30px;">
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-clipboard-check"></i>
-                        </div>
-                        <div>
-                            <h3>Dia 1: Aprovação e Início</h3>
-                            <p>Confirmação do pedido, preparação dos arquivos e início da produção dos adesivos.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-print"></i>
-                        </div>
-                        <div>
-                            <h3>Dia 2: Produção</h3>
-                            <p>Corte dos adesivos, produção das placas de acrílico e preparação dos materiais.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-truck"></i>
-                        </div>
-                        <div>
-                            <h3>Dia 3: Entrega/Instalação</h3>
-                            <p>Entrega dos materiais e instalação profissional no local indicado.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div style="margin-top: 30px; padding: 20px; background-color: rgba(0, 102, 204, 0.05); border-radius: 10px;">
-                    <h3 style="color: var(--secondary);"><i class="fas fa-map-marker-alt"></i> Área de Atendimento</h3>
-                    <p>Serviço de entrega e instalação inclusos para a região de Três Rios - RJ. Para outras localidades, consultar taxa de deslocamento.</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Tab 4: Garantia -->
-        <div class="tab-content">
-            <div class="card">
-                <h2><i class="fas fa-shield-alt"></i> Garantia e Compromisso</h2>
-                
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-award"></i>
-                        </div>
-                        <div>
-                            <h3>Garantia de Qualidade</h3>
-                            <p>Todos os materiais possuem garantia contra defeitos de fabricação por 6 meses.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-tools"></i>
-                        </div>
-                        <div>
-                            <h3>Instalação Profissional</h3>
-                            <p>Serviço de aplicação realizado por profissional especializado em adesivagem.</p>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">
-                            <i class="fas fa-headset"></i>
-                        </div>
-                        <div>
-                            <h3>Suporte Pós-Venda</h3>
-                            <p>Suporte técnico por 30 dias após a instalação para dúvidas e orientações.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div style="margin-top: 30px; padding: 20px; background-color: #f8f9fa; border-radius: 10px;">
-                    <h3 style="color: var(--secondary); margin-bottom: 15px;"><i class="fas fa-file-contract"></i> Termos do Serviço</h3>
-                    <ul style="padding-left: 20px;">
-                        <li>Orçamento válido por 15 dias a partir da data de emissão</li>
-                        <li>Projeto inicia após confirmação do pagamento</li>
-                        <li>Alterações no projeto após aprovação podem gerar custos adicionais</li>
-                        <li>Imagens são simulações visuais - resultado final pode variar</li>
-                        <li>Preços sujeitos a alteração sem aviso prévio</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <!-- CTA Section -->
-        <div class="cta-section">
-            <h2 style="margin-bottom: 20px;">Aceitar este Orçamento?</h2>
-            <p style="max-width: 800px; margin: 0 auto 30px; opacity: 0.9;">Para confirmar a produção dos materiais para a <strong>Comercial Tático</strong>, entre em contato pelo WhatsApp.</p>
-            
-            <a href="https://wa.me/5524981356706?text=Olá!%20Sou%20da%20Comercial%20Tático%20e%20aceito%20o%20orçamento%20de%20R$455%20para%20os%20materiais%20impressos" 
-               class="cta-button" 
-               target="_blank">
-                <i class="fab fa-whatsapp"></i> Aceitar Orçamento (R$ 455,00)
-            </a>
-            
-            <a href="https://wa.me/5524981356706?text=Olá!%20Sou%20da%20Comercial%20Tático%20e%20gostaria%20de%20negociar%20o%20pagamento%20à%20vista%20com%205%%20de%20desconto" 
-               class="cta-button secondary" 
-               target="_blank">
-                <i class="fas fa-money-bill-wave"></i> Pagamento à Vista (R$ 432,25)
-            </a>
-            
-            <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.8;">
-                <i class="fas fa-phone-alt"></i> Dúvidas? WhatsApp: (24) 98135-6706 | LumenStudio
-            </p>
-        </div>
-        
-        <!-- Footer -->
-        <div class="footer">
-            <p>Orçamento gerado especialmente para <strong>Comercial Tático - Loja de Armas e Munição</strong></p>
-            <p style="margin-top: 10px;">Emitido em <span id="current-date"></span> por <strong>LumenStudio</strong></p>
-            <p style="margin-top: 10px; font-size: 0.9rem;">
-                <a href="https://rafaelgmotion.github.io/LumenStudio/" target="_blank" style="color: var(--secondary); text-decoration: none;">
-                    <i class="fas fa-external-link-alt"></i> Visite nosso site: rafaelgmotion.github.io/LumenStudio/
-                </a>
-            </p>
-        </div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Proposta Comercial — Machado Store</div>
+  <h1>Mais clientes.<br><span>Todo dia.</span><br>No WhatsApp.</h1>
+  <p class="hero-sub">Uma estratégia de anúncios feita para trazer pessoas prontas para comprar direto no seu atendimento — sem depender do algoritmo.</p>
+  <p class="hero-para">LumenStudio &nbsp;|&nbsp; Rafael Garcia &nbsp;|&nbsp; Três Rios - RJ</p>
+</div>
+
+<!-- PROBLEMA -->
+<div class="problema-bg">
+  <section>
+    <div class="label">O cenário atual</div>
+    <h2>Você posta todo dia.<br>Mas as vendas não acompanham.</h2>
+    <p>Ter seguidores e postar produto não é suficiente para encher a loja de clientes. O Instagram mostra seu conteúdo só para quem já te segue — e mesmo assim, para poucos. Quem está fora do seu perfil, não sabe que você existe.</p>
+
+    <div class="problema-grid">
+      <div class="problema-card">
+        <h3>Dependência do algoritmo</h3>
+        <p>O alcance orgânico cai a cada ano. Postar mais não resolve o problema de visibilidade.</p>
+      </div>
+      <div class="problema-card">
+        <h3>WhatsApp parado</h3>
+        <p>Você tem o canal de vendas certo, mas sem tráfego novo chegando até ele.</p>
+      </div>
+      <div class="problema-card">
+        <h3>Concorrência ativa</h3>
+        <p>Enquanto você espera o cliente aparecer, outras lojas estão aparecendo para ele.</p>
+      </div>
+      <div class="problema-card">
+        <h3>Movimento imprevisível</h3>
+        <p>Sem uma estrutura de aquisição de clientes, as vendas dependem da sorte do dia.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- SOLUÇÃO -->
+<section>
+  <div class="label">Como funciona</div>
+  <h2>Anúncios que levam<br>clientes direto para você.</h2>
+  <p>Tráfego pago não é impulsionamento de post. É uma campanha estruturada que mostra a sua loja para pessoas que têm perfil de compra — e as leva direto para o seu WhatsApp.</p>
+
+  <div class="solucao-steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Definimos quem é seu cliente ideal</h3>
+        <p>Configuramos os anúncios para atingir pessoas em Três Rios e região com interesse em moda masculina — homens com perfil de compra real, não qualquer pessoa.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Criamos os anúncios e subimos as campanhas</h3>
+        <p>Desenvolvemos os criativos e configuramos tudo no Gerenciador de Anúncios da Meta. Você não precisa entender de tecnologia — cuidamos de tudo.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Os clientes chegam no seu WhatsApp</h3>
+        <p>Cada pessoa que clica no anúncio vai direto para o seu WhatsApp já interessada. Você só precisa atender e fechar a venda.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Acompanhamos e otimizamos todo mês</h3>
+        <p>Monitoramos os resultados diariamente e ajustamos o que for necessário para trazer cada vez mais conversas pelo menor custo possível.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE -->
+<div class="case-bg">
+  <div class="case-inner">
+    <div class="label">Prova real — aqui em Três Rios</div>
+    <h2>421 conversas no WhatsApp.<br>Em 20 dias.</h2>
+    <p>Uma ótica local aqui na cidade aplicou essa mesma estratégia. Em menos de três semanas, gerou centenas de conversas novas com clientes prontos para comprar — com custo por conversa muito abaixo do mercado.</p>
+
+    <div class="numeros">
+      <div class="numero-card">
+        <div class="valor">421</div>
+        <p class="desc">conversas geradas no WhatsApp</p>
+      </div>
+      <div class="numero-card">
+        <div class="valor">20</div>
+        <p class="desc">dias de campanha ativa</p>
+      </div>
+      <div class="numero-card">
+        <div class="valor">32%</div>
+        <p class="desc">das vendas mensais vieram dos anúncios</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROPOSTA -->
+<section>
+  <div class="label">Proposta para a Machado Store</div>
+  <h2>O que está incluído<br>e quanto custa.</h2>
+  <p>Montamos um plano de entrada pensado para gerar resultado real nos primeiros 30 dias, sem comprometer seu caixa.</p>
+
+  <div class="plano-card">
+    <div class="plano-badge">Plano de Ativação — 3 meses</div>
+    <h3>Tudo que sua loja precisa<br>para atrair clientes pelo WhatsApp.</h3>
+
+    <ul class="plano-itens">
+      <li>
+        <span class="check">✓</span>
+        Criação e configuração completa das campanhas no Meta Ads (Facebook e Instagram)
+      </li>
+      <li>
+        <span class="check">✓</span>
+        Segmentação para público local com perfil de compra de moda masculina
+      </li>
+      <li>
+        <span class="check">✓</span>
+        Desenvolvimento dos criativos dos anúncios (imagens e textos)
+      </li>
+      <li>
+        <span class="check">✓</span>
+        Monitoramento diário das campanhas com otimizações contínuas
+      </li>
+      <li>
+        <span class="check">✓</span>
+        Relatório mensal com número de conversas geradas e custo por resultado
+      </li>
+      <li>
+        <span class="check">✓</span>
+        Suporte direto pelo WhatsApp durante todo o período
+      </li>
+    </ul>
+
+    <div class="preco-row">
+      <div class="preco-bloco">
+        <p class="preco-label">Gestão mensal</p>
+        <div class="preco-valor"><span>R$</span> 500</div>
+        <p class="preco-obs">pelos primeiros 3 meses &nbsp;·&nbsp; sem fidelidade forçada</p>
+      </div>
     </div>
 
-    <script>
-        // Set current date
-        document.getElementById('current-date').textContent = new Date().toLocaleDateString('pt-BR', {
-            day: '2-digit',
-            month: 'long',
-            year: 'numeric'
-        });
-        
-        // Tab functionality
-        function showTab(tabIndex) {
-            const tabs = document.querySelectorAll('.tab');
-            const tabContents = document.querySelectorAll('.tab-content');
-            
-            tabs.forEach(tab => tab.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
-            
-            tabs[tabIndex].classList.add('active');
-            tabContents[tabIndex].classList.add('active');
-        }
-        
-        // Calculate total with discount
-        function calculateTotal() {
-            const prices = [90, 80, 90, 45, 100, 50]; // Adicionado o 6º produto
-            const total = prices.reduce((sum, price) => sum + price, 0);
-            const discount = total * 0.05;
-            const totalWithDiscount = total - discount;
-            
-            // Update display
-            document.getElementById('total-investment').textContent = 'R$ ' + total.toFixed(2).replace('.', ',');
-        }
-        
-        // Lightbox functionality
-        function openLightbox(imageSrc, caption) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            const lightboxCaption = document.getElementById('lightbox-caption');
-            
-            lightboxImg.src = imageSrc;
-            lightboxCaption.textContent = caption;
-            lightbox.style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
-        }
-        
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scrolling
-        }
-        
-        // Close lightbox when clicking outside the image
-        document.getElementById('lightbox').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeLightbox();
-            }
-        });
-        
-        // Close lightbox with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            }
-        });
-        
-        // Initial calculations
-        window.onload = function() {
-            calculateTotal();
-        };
-    </script>
-</body>
-</html>
+    <div class="preco-midia">
+      <p><strong>Investimento em mídia (verba para os anúncios):</strong> de R$600 a R$900/mês, pago diretamente para o Facebook. Esse valor é separado da gestão e fica 100% dentro da plataforma gerando resultados para a sua loja.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PERFIL -->
+<div class="problema-bg">
+  <section>
+    <div class="label">Quem vai cuidar da sua loja</div>
+    <h2>Rafael Garcia</h2>
+
+    <div class="perfil-grid">
+      <div class="perfil-foto">
+        <img src="data:image/webp;base64,UklGRtoLAgBXRUJQVlA4WAoAAAAgAAAANwQANwQASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDgg7AkCABAZC50BKjgEOAQ+GQqEQaEE7k8+BABhLS0Em8ZMusnhtY/GOBJraS14Yods99v3TDzvWV6AHgv80f2P6eP++9Clre3qxJYJ4Oel5Y/MPpPFk/0dd/uf/l813qj9Wfmp84P/b7C/6H6mv7E/tR/q/i56w/+j6f/9v6OfrN/p3TQ+vJ/SPWz847//e2//W8cu+kf/Lzh/Qf9H/u/8fyN/Nvvf97/jP9T/1f8l6dPlr30/8D1Q/nf5Y/kf5H97PeH/1+b/6D/mf+f1LPzH+t/8L+/flH8o81G937Kfhnydv4P229w/1X/e+wZ/Rv7b/5vYn/2eh57T7CH669Wn/i//P+//OD4yfr3/C/+P+3+Bb9gf/GTW7+N6YvNqB7mEIe1/7qq76TTc58qVCgmYawPTPxLAdr68b/Uoti4flW/HDZ9VJs9ahtqH/+xxvUxdv74jllUvox10nA5PIG3DgWpg4s7LKBHEPEyoASf19nnn9KmPYaGhbqRt1XRrREtXCqpLQ3SXhpVRkhWG+4jYpF18sgqMNCme1QzT503qJPTknK20mIQoUAWEWoWuqIJaAjT0txTx5A3AJq+Uy0LudOv8uDqj6+qnXbFIFi1GF7izK/SOiJ2PqIB/JUecqqIo/A/093IkL+SxFqDdzsvtzNbOG3n8wPFLRypHoYw10tiXRoiBq0BkDWVmXrJrqMgtZEsinWeOCXreaECl4IriXoMmYdnHHqEA8WY9OuVfErCHoYS7GQNDqvvzsVsTu5klnAUHvApx5n9fGFbLDVUn0hcAUXygAK9W9nS0nLfDEusZ/cHVc5GJdGT561WSenWVv0/wx76e+I+yR3Fwmpae0Uyf3NUsgvLnl2thPy250TxrKW/g8C5444cuUlWboTgikn40sNbB++9o393t6w3U+b09SY6Sbiz03hh2rSySxMu+LeZg1cNAqD8hzagSP5YnXgO2aOqX3FkqnGFaPGhE8hqx55Cr17Du7OQ5ojZ1l8WvFMEcCoSg6xyYXHJhqv+DixcijeJn6Y5WttL6zdVdy5e82/yHcY5H/yWUXBEMT1Lk5M0P21jOXpL8qhRns64C9MbVp4DxNKOYCGFekVFB70aWVr57eUL6HroG3ae6cTv6EhUGeThYijbU74Cy1Ri6R3PIcu6L6GNYQcxqvb5rajQZDVXd6wRHbu6iHPyOf6HHlRUa/Sl8QDob0Mji2Odi4QXhvSsHalAPIMyqiEFjHrvgi0eS7uepyjamo1q8fhcjUYRq60oywGBG+zCTcH+BYVANe3o8U0ARfsZNljdXqqSvv/c9QmYBsj0Cu+fI288CQNuEHuSalkjGqFrzzn58NrYT0UsQtj1411Yc3eOkvD4Ka3wKqTVBKUVy5ynlgyU3MA5TGFXKhc67rqAk+OnHlGyHWkNdPknOG0YLkTtftxo7Ygy8MOmyXLw982zdLi3HXNMjM3whRA8NAz41C1j5jUruCKOVMvJuIl3GYXw6YFzJDzigcBX/9RD9o2CfzGGA2cbLeBPJECg8SZjBxpa5dLFZWhGVlqEW5INkcobxF3RiprD1oHdKEs7HcWvzynvxQpeM8ubMFdfVgzP/T61UGhKTcSP8JA1L4hPcvoT9bhJrYZIVKA2ei3Itg4/wcv0sPbQg0UwD8XjxVs7vobBpWxCcjg23tEgfLE61GwgxL0558FGRiSysSLCujYVYtWgNDrWKlR/6NuPsUNvmiBx9856lItzCIA2sQdBX5tt9eOXaWwK4yhxz6zPj3hbGGrAUnWfUO9Xlc/6+XJfrkuxgXJeBBwLg2g2JQLnCB/YNIDH3BYReiFbCOF7ap3HSM7WZRVJUHsdCmD6xLV5wngSbmPJb8SmCqitCb4dOC4jOCYaUPJS/0NynNAwsEBhs6GbyrfQthifFaTTcBhW2pcmnHBC93NzmXs9hYoODKh72RFEmOmd4uj5CrHKppbxUyGUON3KSaL4CXha3sloKEiHVC9ai/jgS0lQKPDydmzNQFeAoEezr0ch/5qc6Y0qkdtBHbARwUKJvaSc5IGfV7Rc/6dbRxdOhIZnbS7L12KsNgOX94AGZhLWMwH2Q2vOMWoxkGybral3JdpDUcV0JqBSFsjYnZ4NtoM78fUMR5uzKP9SJjjxzt7Qr6EuyUpIIyqqOTh9uuaxMFM48bCdeYb7MNSfFgSgY9YDAfM6GFPiQLB9Y1tDYvE6TmzPaqEugvzn//6eRcVvNPHTlsQ7c5fin1+ndYkhbDeB6MthA349k6pfZYJcuNC74Igmxvt8gVeRAPkkgHjru1QM3EtTe0u3pCU6DBseZF1jUd4FJ69P3oq8HM7kmsWDaIxwSGLSjbNHbNaM6Wus1NkZ+JHgRc0OsOtkxIiEX/nwhukuMG+zKKi4/kMl1uynnQqZqX4n6ZibT97umwNxuxr8pP9m5WavZUBQdYia5Zlf2yk2dSGTIv1HWLz+QJ8cBXoWs0b7djj1BYC6SFjtDg+mAdbjNHgUgyTs2rHpMm0jYQ3gnaNSgJhX3YGfVVVBFjQO2S1DctU6M8fZq7OLAilbhTTljlarWLNa9mieGEpPnOLftJML/OTj1aGVEMEsCtNxLtYnP4FtPhzihY9jh6l6zzz6pb55M3r0K1L2aL5/b4GYXQxKWL3QZPr2YKNfNY8QSsDaoh28bjOrMCPiC6CbTcORCZvuC9Khlrd5RJywf7MhzPwUiVjFLJqnqCD8/f+Rv8BXLoswgJvA6I3gIt/reN5YdTm4+otSLdKEct3SXlT6aUbL6o43brYU6vlCPsoj9CSlLIBzfKqeht0emkN
